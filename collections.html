@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections | VEGA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="collections.css">
+</head>
+
+<body class="collections">
+
+    <header class="top-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">VEGA</a>
+            <div class="nav-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo desktop-logo">VEGA</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="shop.html" class="nav-link"><i class="fas fa-shopping-bag"></i><span>Shop</span></a></li>
+                <li><a href="new-arrivals.html" class="nav-link"><i class="fas fa-star"></i><span>New</span></a></li>
+                <li><a href="#" class="nav-link active"><i class="fas fa-layer-group"></i><span>Collections</span></a>
+                </li>
+                <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                <li id="adminNavLink" style="display: none;"><a href="admin.html" class="nav-link"><i
+                            class="fas fa-shield-alt"></i><span>Admin</span></a></li>
+            </ul>
+            <div class="nav-icons desktop-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIconDesktop">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="bottom-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="shop.html" class="bottom-nav-link">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Shop</span>
+            </a>
+            <a href="new-arrivals.html" class="bottom-nav-link">
+                <i class="fas fa-star"></i>
+                <span>New</span>
+            </a>
+            <a href="#" class="bottom-nav-link active">
+                <i class="fas fa-layer-group"></i>
+                <span>Collections</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="admin.html" class="bottom-nav-link" id="adminBottomNavLink" style="display: none;">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <section class="collections-header">
+            <div class="container">
+                <div class="collections-header-content">
+                    <h1 class="page-title">Collections</h1>
+                    <p class="page-subtitle">Explore our curated collections for every occasion</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="collections-grid-section">
+            <div class="container">
+                <div class="collections-grid" id="collectionsGrid">
+
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--dark-gray);">Loading
+                        collections...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">$0.00</span>
+            </div>
+            <a href="checkout.html" class="btn checkout-btn">Checkout</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>VEGA</h4>
+                    <p>Our mission is to bring variety back to the wardrobe - because fashion shouldn't feel repetitive.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/vegaa.eg?igsh=MXBpYWswdHdwbWZ6ZQ=="><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@vegaa.eg?_r=1&_t=ZS-927AMQHEKKA"><i
+                                class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="new-arrivals.html">New Arrivals</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> vegaaa.eg1@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Support</h4>
+                    <form id="footer-support-form" class="footer-support-form">
+                        <input type="tel" class="support-phone" placeholder="Your Phone Number" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 8px; font-family: inherit;">
+                        <textarea class="support-message" placeholder="Tell us how we can help..." rows="4" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+                        <button type="submit"
+                            style="background-color: #333; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-top: 8px; width: 100%;">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 VEGA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+
+</html>
