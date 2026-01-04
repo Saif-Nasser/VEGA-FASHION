@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | VEGA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="shop.css?v=2">
+</head>
+
+<body class="shop">
+
+    <header class="top-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">VEGA</a>
+            <div class="nav-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo desktop-logo">VEGA</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#" class="nav-link active"><i class="fas fa-shopping-bag"></i><span>Shop</span></a></li>
+                <li><a href="new-arrivals.html" class="nav-link"><i class="fas fa-star"></i><span>New</span></a></li>
+                <li><a href="collections.html" class="nav-link"><i
+                            class="fas fa-layer-group"></i><span>Collections</span></a></li>
+                <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                <li id="adminNavLink" style="display: none;"><a href="admin.html" class="nav-link"><i
+                            class="fas fa-shield-alt"></i><span>Admin</span></a></li>
+            </ul>
+            <div class="nav-icons desktop-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIconDesktop">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="bottom-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="bottom-nav-link active">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Shop</span>
+            </a>
+            <a href="new-arrivals.html" class="bottom-nav-link">
+                <i class="fas fa-star"></i>
+                <span>New</span>
+            </a>
+            <a href="collections.html" class="bottom-nav-link">
+                <i class="fas fa-layer-group"></i>
+                <span>Collections</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="admin.html" class="bottom-nav-link" id="adminBottomNavLink" style="display: none;">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <section class="shop-header">
+            <div class="container">
+                <div class="shop-header-content">
+                    <h1 class="shop-title">Shop All</h1>
+                    <p class="shop-subtitle">Discover our complete collection of premium women's clothing</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="shop-content">
+            <div class="container">
+                <div class="shop-layout">
+
+                    <div class="products-container">
+                        <div class="products-grid" id="productsGrid">
+
+                        </div>
+
+                        <div class="pagination">
+                            <button class="pagination-btn prev" disabled>
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </button>
+                            <div class="page-numbers">
+
+                            </div>
+                            <button class="pagination-btn next">
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">$0.00</span>
+            </div>
+            <a href="checkout.html" class="btn checkout-btn">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal-backdrop" id="productModalBackdrop">
+        <div class="order-modal" id="productModal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalProductName">Product Details</h2>
+                <button class="close-modal" id="closeProductModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="productModalBody">
+                <div class="product-details-container"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                    <div class="product-modal-image"
+                        style="background: #f5f5f5; border-radius: 12px; display: flex; align-items: stretch; justify-content: center;">
+                        <img id="modalProductImg" class="modal-image--large" src="https://via.placeholder.com/400"
+                            alt="Product Image"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="product-modal-info">
+                        <p id="modalProductCategory"
+                            style="color: var(--dark-gray); text-transform: uppercase; font-size: 14px; letter-spacing: 1px; margin-bottom: 10px;">
+                        </p>
+                        <h3 id="modalProductTitle" style="font-size: 28px; margin-bottom: 15px;"></h3>
+                        <div class="modal-rating" style="margin-bottom: 15px; color: #ffc107;">
+                            <span id="modalAverageRating">0.0</span> <i class="fas fa-star"></i>
+                            <span id="modalReviewCount"
+                                style="color: var(--dark-gray); font-size: 14px; margin-left: 10px;">(0 reviews)</span>
+                        </div>
+                        <p id="modalProductPrice" style="font-size: 24px; font-weight: 700; margin-bottom: 20px;"></p>
+                        <p id="modalProductDescription"
+                            style="color: var(--dark-gray); line-height: 1.6; margin-bottom: 30px;"></p>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label>Select Size</label>
+                            <div id="modalProductSizes" style="display: flex; gap: 10px; margin-top: 10px;"></div>
+                        </div>
+
+                        <button id="modalAddToCartBtn" class="submit-btn" style="margin-top: 20px;">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
+
+                <div class="reviews-section">
+                    <h4 style="font-size: 20px; margin-bottom: 20px;">Customer Reviews</h4>
+                    <div id="reviewsList" style="margin-bottom: 30px;">
+                        <p style="color: var(--dark-gray);">No reviews yet. Be the first to review!</p>
+                    </div>
+
+                    <div id="writeReviewSection"
+                        style="display: none; background: #f9f9f9; padding: 25px; border-radius: 12px;">
+                        <h5 style="font-size: 18px; margin-bottom: 15px;">Write a Review</h5>
+                        <form id="reviewForm">
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <div class="rating-input"
+                                    style="font-size: 24px; color: #ddd; cursor: pointer; display: flex; gap: 5px;">
+                                    <i class="fas fa-star" data-value="1"></i>
+                                    <i class="fas fa-star" data-value="2"></i>
+                                    <i class="fas fa-star" data-value="3"></i>
+                                    <i class="fas fa-star" data-value="4"></i>
+                                    <i class="fas fa-star" data-value="5"></i>
+                                </div>
+                                <input type="hidden" id="reviewRating" value="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewComment">Your Review</label>
+                                <textarea id="reviewComment" rows="4"
+                                    placeholder="Share your experience with this product..." required
+                                    style="background: white;"></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn" style="width: auto; padding: 12px 30px;">Post
+                                Review</button>
+                        </form>
+                    </div>
+                    <div id="loginToReviewMsg"
+                        style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+                        <p>Please <a href="login.html" style="color: var(--black); font-weight: 600;">login</a> to leave
+                            a review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>VEGA</h4>
+                    <p>Our mission is to bring variety back to the wardrobe - because fashion shouldn't feel repetitive.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/vegaa.eg?igsh=MXBpYWswdHdwbWZ6ZQ=="><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@vegaa.eg?_r=1&_t=ZS-927AMQHEKKA"><i
+                                class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="#new">New Arrivals</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> vegaaa.eg1@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Support</h4>
+                    <form id="footer-support-form" class="footer-support-form">
+                        <input type="tel" class="support-phone" placeholder="Your Phone Number" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 8px; font-family: inherit;">
+                        <textarea class="support-message" placeholder="Tell us how we can help..." rows="4" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+                        <button type="submit"
+                            style="background-color: #333; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-top: 8px; width: 100%;">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 VEGA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="firebase-config.js"></script>
+
+    <script src="script.js?v=2"></script>
+    <script src="shop.js?v=2"></script>
+</body>
+
+
+</html>

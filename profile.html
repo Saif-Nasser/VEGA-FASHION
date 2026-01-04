@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | VEGA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body class="profile">
+
+    <header class="top-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">VEGA</a>
+            <div class="nav-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo desktop-logo">VEGA</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="shop.html" class="nav-link"><i class="fas fa-shopping-bag"></i><span>Shop</span></a></li>
+                <li><a href="new-arrivals.html" class="nav-link"><i class="fas fa-star"></i><span>New</span></a></li>
+                <li><a href="collections.html" class="nav-link"><i
+                            class="fas fa-layer-group"></i><span>Collections</span></a></li>
+                <li><a href="#" class="nav-link active"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                <li id="adminNavLink" style="display: none;"><a href="admin.html" class="nav-link"><i
+                            class="fas fa-shield-alt"></i><span>Admin</span></a></li>
+            </ul>
+            <div class="nav-icons desktop-icons">
+                <div class="cart-icon" style="position: relative;" id="cartIconDesktop">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="bottom-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="shop.html" class="bottom-nav-link">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Shop</span>
+            </a>
+            <a href="new-arrivals.html" class="bottom-nav-link">
+                <i class="fas fa-star"></i>
+                <span>New</span>
+            </a>
+            <a href="collections.html" class="bottom-nav-link">
+                <i class="fas fa-layer-group"></i>
+                <span>Collections</span>
+            </a>
+            <a href="#" class="bottom-nav-link active">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="admin.html" class="bottom-nav-link" id="adminBottomNavLink" style="display: none;">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <section class="profile-header">
+            <div class="container">
+                <div class="profile-header-content">
+                    <div class="profile-avatar" id="profileAvatar">
+                        <img src="" alt="Profile Picture" id="profileAvatarImg" style="display: none;">
+                        <div class="profile-avatar-placeholder" id="avatarPlaceholder">
+                            <span id="avatarInitials"></span>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <button class="remove-avatar" id="removeAvatarBtn" title="Remove Photo" style="display: none;">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <button class="edit-avatar" id="editAvatarBtn"><i class="fas fa-camera"></i></button>
+                        <input type="file" id="avatarUploadInput" accept="image/*" style="display: none;">
+                        <div class="avatar-upload-progress" id="avatarProgress" style="display: none;">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profileUserName">Loading...</h1>
+                        <p class="profile-email" id="profileUserEmail">Loading...</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="ordersCount">0</span>
+                                <span class="stat-label">Orders</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="wishlistCount">0</span>
+                                <span class="stat-label">Wishlist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-sections">
+            <div class="container">
+                <div class="profile-grid">
+
+                    <div class="profile-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-shopping-bag"></i>
+                            My Orders
+                        </h2>
+                        <div class="order-list" id="ordersList">
+                            <p style="text-align: center; color: var(--dark-gray); padding: 20px;">Loading orders...</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-heart"></i>
+                            My Wishlist
+                        </h2>
+                        <div class="wishlist-items" id="wishlistItems">
+                            <p style="text-align: center; color: var(--dark-gray);">Loading wishlist...</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="logout-section">
+            <div class="container">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log Out
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">$0.00</span>
+            </div>
+            <a href="checkout.html" class="btn checkout-btn">Checkout</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>VEGA</h4>
+                    <p>Our mission is to bring variety back to the wardrobe - because fashion shouldn't feel repetitive.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/vegaa.eg?igsh=MXBpYWswdHdwbWZ6ZQ=="><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@vegaa.eg?_r=1&_t=ZS-927AMQHEKKA"><i
+                                class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="new-arrivals.html">New Arrivals</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> vegaaa.eg1@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Support</h4>
+                    <form id="footer-support-form" class="footer-support-form">
+                        <input type="tel" class="support-phone" placeholder="Your Phone Number" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 8px; font-family: inherit;">
+                        <textarea class="support-message" placeholder="Tell us how we can help..." rows="4" required
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+                        <button type="submit"
+                            style="background-color: #333; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-top: 8px; width: 100%;">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 VEGA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Profile page loaded');
+
+            if (typeof auth !== 'undefined') {
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        console.log('User is logged in:', user.email);
+                        updateProfileUI(user);
+                    } else {
+                        console.log('No user logged in, redirecting to login...');
+                        window.location.href = 'login.html';
+                    }
+                });
+            } else {
+                console.error('Firebase auth not available');
+
+                document.getElementById('profileUserName').textContent = 'Authentication Error';
+                document.getElementById('profileUserEmail').textContent = 'Please refresh the page';
+                document.getElementById('currentUserEmail').textContent = 'Not available';
+            }
+
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+
+            const editAvatarBtn = document.getElementById('editAvatarBtn');
+            const avatarUploadInput = document.getElementById('avatarUploadInput');
+            const avatarProgress = document.getElementById('avatarProgress');
+            const profileAvatarImg = document.getElementById('profileAvatarImg');
+
+            if (editAvatarBtn && avatarUploadInput) {
+                editAvatarBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    avatarUploadInput.click();
+                });
+
+                const removeAvatarBtn = document.getElementById('removeAvatarBtn');
+                if (removeAvatarBtn) {
+                    removeAvatarBtn.addEventListener('click', handleRemoveAvatar);
+                }
+
+                avatarUploadInput.addEventListener('change', async function (e) {
+                    const file = this.files[0];
+                    if (!file) return;
+
+                    if (!file.type.startsWith('image/')) {
+                        showTempMessage && showTempMessage('Please select an image file');
+                        return;
+                    }
+
+                    if (file.size > 5 * 1024 * 1024) {
+                        showTempMessage && showTempMessage('Image size must be less than 5MB');
+                        return;
+                    }
+
+                    const currentUser = firebase.auth().currentUser;
+                    if (!currentUser) {
+                        showTempMessage && showTempMessage('Please log in to update your avatar');
+                        return;
+                    }
+
+                    avatarProgress.style.display = 'block';
+                    editAvatarBtn.disabled = true;
+
+                    let progress = 0;
+                    const progressInterval = setInterval(() => {
+                        progress += Math.random() * 30;
+                        if (progress > 90) progress = 90;
+                        const progressBar = avatarProgress.querySelector('.progress-bar');
+                        progressBar.style.width = progress + '%';
+                    }, 200);
+
+                    const reader = new FileReader();
+                    reader.onload = async function (event) {
+                        try {
+                            const imageData = event.target.result;
+
+                            compressImage(imageData, async (compressedImage) => {
+
+                                profileAvatarImg.style.opacity = '0.5';
+                                profileAvatarImg.src = compressedImage;
+
+                                console.log("Saving compressed avatar for user:", currentUser.uid);
+                                await db.collection('users').doc(currentUser.uid).set({
+                                    avatarImage: compressedImage,
+                                    avatarUploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+                                }, { merge: true });
+
+                                try {
+                                    sessionStorage.setItem(`avatar_${currentUser.uid}`, compressedImage);
+                                } catch (e) {
+                                    console.warn('Could not cache avatar:', e);
+                                }
+
+                                console.log("Compressed avatar saved to Firestore successfully");
+
+                                progress = 100;
+                                const progressBar = avatarProgress.querySelector('.progress-bar');
+                                progressBar.style.width = '100%';
+
+                                setTimeout(() => {
+                                    profileAvatarImg.style.opacity = '1';
+                                    profileAvatarImg.style.transform = 'scale(1.05)';
+
+                                    updateAvatarUI(compressedImage);
+
+                                    const successMsg = document.createElement('div');
+                                    successMsg.className = 'avatar-success-msg';
+                                    successMsg.textContent = '✓ Avatar Updated';
+                                    editAvatarBtn.parentElement.appendChild(successMsg);
+
+                                    setTimeout(() => {
+                                        successMsg.remove();
+                                        profileAvatarImg.style.transform = 'scale(1)';
+                                    }, 2000);
+                                }, 300);
+
+                                clearInterval(progressInterval);
+                                setTimeout(() => {
+                                    avatarProgress.style.display = 'none';
+                                    editAvatarBtn.disabled = false;
+                                    avatarUploadInput.value = '';
+                                }, 1500);
+                            });
+                        } catch (error) {
+                            console.error('Error saving avatar to Firestore:', error);
+                            showTempMessage && showTempMessage('Error saving avatar. Please try again.');
+                            profileAvatarImg.style.opacity = '1';
+                            avatarProgress.style.display = 'none';
+                            editAvatarBtn.disabled = false;
+                            clearInterval(progressInterval);
+                        }
+                    };
+
+                    reader.onerror = function () {
+                        showTempMessage && showTempMessage('Error reading file');
+                        avatarProgress.style.display = 'none';
+                        editAvatarBtn.disabled = false;
+                        clearInterval(progressInterval);
+                    };
+
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            auth.onAuthStateChanged(async (user) => {
+                if (user && profileAvatarImg) {
+                    try {
+
+                        const cachedAvatar = sessionStorage.getItem(`avatar_${user.uid}`);
+                        if (cachedAvatar) {
+                            updateAvatarUI(cachedAvatar);
+                            console.log("Avatar loaded from cache for user:", user.uid);
+                            return;
+                        }
+
+                        const loadTimeout = new Promise((_, reject) =>
+                            setTimeout(() => reject(new Error('Timeout')), 3000)
+                        );
+
+                        const firestorePromise = db.collection('users').doc(user.uid).get();
+
+                        try {
+                            const userDoc = await Promise.race([firestorePromise, loadTimeout]);
+
+                            if (userDoc.exists && userDoc.data().avatarImage) {
+                                const avatarData = userDoc.data().avatarImage;
+
+                                compressImage(avatarData, (compressedImage) => {
+                                    profileAvatarImg.src = compressedImage;
+
+                                    try {
+                                        sessionStorage.setItem(`avatar_${user.uid}`, compressedImage);
+                                    } catch (e) {
+                                        console.warn('Could not cache avatar:', e);
+                                    }
+
+                                    updateAvatarUI(compressedImage);
+                                    console.log("Avatar loaded and cached for user:", user.uid);
+                                });
+                            }
+                        } catch (timeoutError) {
+                            console.log("Avatar load timeout, using default placeholder");
+                            const userName = user.displayName || user.email.split('@')[0];
+                            updateAvatarUI(null, userName);
+                        }
+                    } catch (error) {
+                        console.error('Error loading avatar from Firestore:', error);
+                    }
+                }
+            });
+
+            function compressImage(imageData, callback) {
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const maxWidth = 256;
+                    const maxHeight = 256;
+
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const compressedData = canvas.toDataURL('image/jpeg', 0.7);
+                    callback(compressedData);
+                };
+                img.src = imageData;
+            }
+
+            function updateAvatarUI(imageData = null, name = '') {
+                const img = document.getElementById('profileAvatarImg');
+                const placeholder = document.getElementById('avatarPlaceholder');
+                const initialsSpan = document.getElementById('avatarInitials');
+                const removeBtn = document.getElementById('removeAvatarBtn');
+                const icon = placeholder.querySelector('i');
+
+                if (imageData) {
+                    img.src = imageData;
+                    img.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    if (removeBtn) removeBtn.style.display = 'flex';
+                } else {
+                    img.style.display = 'none';
+                    img.src = '';
+                    placeholder.style.display = 'flex';
+                    if (removeBtn) removeBtn.style.display = 'none';
+
+                    if (name) {
+                        const initials = name.split(' ')
+                            .map(n => n[0])
+                            .join('')
+                            .toUpperCase()
+                            .substring(0, 2);
+                        initialsSpan.textContent = initials;
+                        initialsSpan.style.display = 'block';
+                        icon.style.display = 'none';
+                    } else {
+                        initialsSpan.style.display = 'none';
+                        icon.style.display = 'block';
+                    }
+                }
+            }
+
+            async function handleRemoveAvatar() {
+                if (!await showConfirm('Are you sure you want to remove your profile photo?')) return;
+
+                const currentUser = firebase.auth().currentUser;
+                if (!currentUser) return;
+
+                try {
+                    const removeBtn = document.getElementById('removeAvatarBtn');
+                    if (removeBtn) {
+                        removeBtn.disabled = true;
+                        removeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    }
+
+                    console.log("Removing avatar for user:", currentUser.uid);
+                    await db.collection('users').doc(currentUser.uid).update({
+                        avatarImage: firebase.firestore.FieldValue.delete(),
+                        avatarUploadedAt: firebase.firestore.FieldValue.delete()
+                    });
+
+                    sessionStorage.removeItem(`avatar_${currentUser.uid}`);
+
+                    const userName = currentUser.displayName || currentUser.email.split('@')[0];
+                    updateAvatarUI(null, userName);
+
+                    if (removeBtn) {
+                        removeBtn.disabled = false;
+                        removeBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                    }
+
+                    showTempMessage('✓ Photo Removed');
+                } catch (error) {
+                    console.error('Error removing avatar:', error);
+                    showTempMessage && showTempMessage('Error removing photo. Please try again.');
+                    const removeBtn = document.getElementById('removeAvatarBtn');
+                    if (removeBtn) {
+                        removeBtn.disabled = false;
+                        removeBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                    }
+                }
+            }
+
+            document.querySelectorAll('.remove-wishlist').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const item = this.closest('.wishlist-item');
+                    item.style.opacity = '0.5';
+                    setTimeout(() => {
+                        item.remove();
+                    }, 300);
+                });
+            });
+
+            function initializeWishlist() {
+                console.log("Initializing wishlist...");
+
+                if (typeof firebase === 'undefined' || !firebase.auth) {
+                    console.log("Firebase not ready yet, retrying in 500ms");
+                    setTimeout(initializeWishlist, 500);
+                    return;
+                }
+
+                firebase.auth().onAuthStateChanged(async (user) => {
+                    console.log("Auth state changed, user:", user ? user.uid : 'none');
+                    if (user) {
+                        await loadUserWishlist(user.uid);
+                    }
+                });
+            }
+
+            initializeWishlist();
+        });
+
+        function updateProfileUI(user) {
+
+            const userName = user.displayName || user.email.split('@')[0];
+            document.getElementById('profileUserName').textContent = userName;
+            document.getElementById('profileUserEmail').textContent = user.email;
+            document.getElementById('currentUserEmail').textContent = user.email;
+
+            if (user.photoURL) {
+                updateAvatarUI(user.photoURL);
+            } else {
+                updateAvatarUI(null, userName);
+            }
+        }
+
+        async function handleLogout() {
+            console.log('Logout button clicked');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (logoutBtn) {
+
+                logoutBtn.disabled = true;
+                const originalHTML = logoutBtn.innerHTML;
+                logoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+
+                try {
+
+                    if (typeof logOut === 'function') {
+                        const result = await logOut();
+
+                        if (result.success) {
+
+                            logoutBtn.innerHTML = '<i class="fas fa-check"></i> Goodbye!';
+                            logoutBtn.style.backgroundColor = '#2e7d32';
+
+                            setTimeout(() => {
+                                window.location.href = 'index.html';
+                            }, 1000);
+                        } else {
+
+                            showTempMessage && showTempMessage('Logout failed: ' + (result.error || 'Unknown error'));
+                            logoutBtn.innerHTML = originalHTML;
+                            logoutBtn.disabled = false;
+                        }
+                    } else {
+
+                        console.warn('logOut function not available, using fallback');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    showTempMessage && showTempMessage('An error occurred during logout. Please try again.');
+                    logoutBtn.innerHTML = originalHTML;
+                    logoutBtn.disabled = false;
+                }
+            }
+        }
+
+        async function loadUserWishlist(userId) {
+            const wishlistContainer = document.getElementById('wishlistItems');
+            if (!wishlistContainer) return;
+
+            try {
+
+                if (typeof db === 'undefined') {
+                    console.error("Firebase database not initialized");
+                    wishlistContainer.innerHTML = `<p style="color: #dc3545;">Database error. Please refresh the page.</p>`;
+                    return;
+                }
+
+                console.log("Loading wishlist for user:", userId);
+                const userDoc = await db.collection('users').doc(userId).get();
+                const wishlist = userDoc.exists ? (userDoc.data().wishlist || []) : [];
+
+                console.log("User wishlist:", wishlist);
+
+                if (wishlist.length === 0) {
+                    wishlistContainer.innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <i class="fas fa-heart" style="font-size: 48px; color: #ddd; margin-bottom: 20px;"></i>
+                            <p style="color: var(--dark-gray);">Your wishlist is empty</p>
+                            <a href="shop.html" style="color: var(--black); font-weight: 600; text-decoration: none;">Start Adding Items</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                wishlistContainer.innerHTML = '';
+                let loadedCount = 0;
+
+                for (const productId of wishlist) {
+                    try {
+                        const productDoc = await db.collection('products').doc(productId).get();
+                        if (productDoc.exists) {
+                            const product = productDoc.data();
+                            product.id = productId;
+                            renderWishlistItem(product, productId, userId);
+                            loadedCount++;
+                        } else {
+                            console.warn("Product not found:", productId);
+                        }
+                    } catch (error) {
+                        console.error("Error loading wishlist product:", productId, error);
+                    }
+                }
+
+                console.log("Loaded wishlist items:", loadedCount);
+
+                const wishlistCountEl = document.getElementById('wishlistCount');
+                if (wishlistCountEl) {
+                    wishlistCountEl.textContent = loadedCount;
+                }
+
+                if (loadedCount === 0) {
+                    wishlistContainer.innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <i class="fas fa-heart" style="font-size: 48px; color: #ddd; margin-bottom: 20px;"></i>
+                            <p style="color: var(--dark-gray);">No items in your wishlist</p>
+                            <a href="shop.html" style="color: var(--black); font-weight: 600; text-decoration: none;">Shop Now</a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading wishlist:', error);
+                wishlistContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #dc3545;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <p>Error loading wishlist: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderWishlistItem(product, productId, userId) {
+            const wishlistContainer = document.getElementById('wishlistItems');
+            if (!wishlistContainer) return;
+
+            const wishlistItem = document.createElement('div');
+            wishlistItem.className = 'wishlist-item';
+            wishlistItem.dataset.productId = productId;
+
+            const price = product.price ? `$${product.price.toFixed(2)}` : 'Price N/A';
+            const imageSrc = (typeof normalizeImageUrl === 'function') ? normalizeImageUrl(product.image) : (product.image || 'https://via.placeholder.com/100');
+
+            wishlistItem.innerHTML = `
+                <img src="${imageSrc}" alt="${product.name}" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/100'" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                <div class="wishlist-info">
+                    <h4>${product.name}</h4>
+                    <p>${price}</p>
+                </div>
+                <button class="remove-wishlist" onclick="window.removeFromWishlist('${productId}', '${userId}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            wishlistContainer.appendChild(wishlistItem);
+        }
+
+        async function addToWishlist(productId) {
+            console.log("Adding to wishlist:", productId);
+
+            const currentUser = firebase.auth().currentUser;
+            if (!currentUser) {
+                showTempMessage && showTempMessage('Please log in to add items to wishlist');
+                return;
+            }
+
+            if (typeof db === 'undefined') {
+                showTempMessage && showTempMessage('Database not initialized. Please refresh the page.');
+                return;
+            }
+
+            try {
+                const userRef = db.collection('users').doc(currentUser.uid);
+                const userDoc = await userRef.get();
+
+                let wishlist = [];
+                if (userDoc.exists && userDoc.data().wishlist) {
+                    wishlist = userDoc.data().wishlist;
+                }
+
+                console.log("Current wishlist:", wishlist);
+
+                if (wishlist.includes(productId)) {
+                    showTempMessage && showTempMessage('Item already in your wishlist');
+                    return;
+                }
+
+                wishlist.push(productId);
+
+                await userRef.set({
+                    wishlist: wishlist
+                }, { merge: true });
+
+                console.log("Added product to wishlist. New wishlist:", wishlist);
+                showTempMessage && showTempMessage('✓ Added to wishlist');
+
+            } catch (error) {
+                console.error('Error adding to wishlist:', error);
+                showTempMessage && showTempMessage('Error adding to wishlist: ' + error.message);
+            }
+        }
+
+        async function removeFromWishlist(productId, userId) {
+            console.log("Removing from wishlist:", productId);
+
+            if (typeof db === 'undefined') {
+                showTempMessage && showTempMessage('Database not initialized. Please refresh the page.');
+                return;
+            }
+
+            try {
+                const userRef = db.collection('users').doc(userId);
+                const userDoc = await userRef.get();
+
+                let wishlist = userDoc.exists ? (userDoc.data().wishlist || []) : [];
+
+                wishlist = wishlist.filter(id => id !== productId);
+
+                await userRef.set({
+                    wishlist: wishlist
+                }, { merge: true });
+
+                console.log("Removed product from wishlist. New wishlist:", wishlist);
+
+                const item = document.querySelector(`[data-product-id="${productId}"]`);
+                if (item) {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(20px)';
+                    setTimeout(() => {
+                        item.remove();
+
+                        const container = document.getElementById('wishlistItems');
+                        if (container && container.children.length === 0) {
+                            loadUserWishlist(userId);
+                        }
+                    }, 300);
+                }
+            } catch (error) {
+                console.error('Error removing from wishlist:', error);
+                showTempMessage && showTempMessage('Error removing from wishlist: ' + error.message);
+            }
+        }
+
+        async function loadUserOrders(userId) {
+            const ordersList = document.getElementById('ordersList');
+            if (!ordersList) return;
+
+            try {
+                if (typeof db === 'undefined') {
+                    console.error("Firebase database not initialized");
+                    ordersList.innerHTML = `<p style="color: #dc3545;">Database error. Please refresh the page.</p>`;
+                    return;
+                }
+
+                console.log("Loading orders for user:", userId);
+
+                const ordersSnapshot = await db.collection('orders')
+                    .where('userId', '==', userId)
+                    .get();
+
+                console.log("Found orders:", ordersSnapshot.size);
+
+                if (ordersSnapshot.empty) {
+                    ordersList.innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <i class="fas fa-shopping-bag" style="font-size: 48px; color: #ddd; margin-bottom: 20px;"></i>
+                            <p style="color: var(--dark-gray);">No orders yet</p>
+                            <a href="shop.html" style="color: var(--black); font-weight: 600; text-decoration: none;">Start Shopping</a>
+                        </div>
+                    `;
+                    const ordersCountEl = document.getElementById('ordersCount');
+                    if (ordersCountEl) {
+                        ordersCountEl.textContent = '0';
+                    }
+                    return;
+                }
+
+                ordersList.innerHTML = '';
+                let orders = [];
+
+                ordersSnapshot.forEach(doc => {
+                    const order = doc.data();
+                    order.docId = doc.id;
+                    orders.push(order);
+                });
+
+                orders.sort((a, b) => {
+                    const dateA = a.createdAt ? new Date(a.createdAt.toDate()).getTime() : new Date(a.date).getTime();
+                    const dateB = b.createdAt ? new Date(b.createdAt.toDate()).getTime() : new Date(b.date).getTime();
+                    return dateB - dateA;
+                });
+
+                orders.forEach(order => {
+                    renderOrderItem(order, order.docId);
+                });
+
+                console.log("Loaded orders:", orders.length);
+                const ordersCountEl = document.getElementById('ordersCount');
+                if (ordersCountEl) {
+                    ordersCountEl.textContent = orders.length;
+                }
+
+            } catch (error) {
+                console.error('Error loading orders:', error);
+                ordersList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #dc3545;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <p>Error loading orders: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderOrderItem(order, orderId) {
+            const ordersList = document.getElementById('ordersList');
+            if (!ordersList) return;
+
+            const orderDate = order.createdAt ? new Date(order.createdAt.toDate()).toLocaleDateString() : new Date(order.date).toLocaleDateString();
+            const orderTime = order.createdAt ? new Date(order.createdAt.toDate()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+            const total = order.total ? order.total.toFixed(2) : '0.00';
+            const status = order.status || 'Pending';
+
+            let statusIcon = 'fa-clock';
+            let statusClass = 'pending';
+
+            if (status === 'Delivered') {
+                statusIcon = 'fa-check-circle';
+                statusClass = 'delivered';
+            } else if (status === 'Shipped') {
+                statusIcon = 'fa-shipping-fast';
+                statusClass = 'shipped';
+            } else if (status === 'Processing') {
+                statusIcon = 'fa-spinner';
+                statusClass = 'processing';
+            }
+
+            const itemCount = order.items ? order.items.length : 0;
+            const shippingAddress = order.shippingAddress || {};
+            const fullName = shippingAddress.fullName || `${shippingAddress.firstName || ''} ${shippingAddress.lastName || ''}`.trim();
+
+            const orderItem = document.createElement('div');
+            orderItem.className = 'order-item';
+            orderItem.innerHTML = `
+                <div class="order-header">
+                    <span class="order-id">Order #${orderId.substring(0, 12).toUpperCase()}</span>
+                    <span class="order-date">${orderDate}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="order-status ${statusClass}">
+                            <i class="fas ${statusIcon}"></i>
+                            ${status}
+                        </div>
+                        <p style="margin: 8px 0 0 0; color: var(--dark-gray); font-size: 13px;">
+                            <strong>${itemCount}</strong> item${itemCount !== 1 ? 's' : ''} • ${fullName}
+                        </p>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="order-total">$${total}</div>
+                        <button class="order-details" onclick="viewOrderDetails('${orderId}')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            ordersList.appendChild(orderItem);
+        }
+
+        async function viewOrderDetails(orderId) {
+            try {
+
+                const orderDoc = await db.collection('orders').doc(orderId).get();
+                if (!orderDoc.exists) {
+                    showTempMessage && showTempMessage('Order not found');
+                    return;
+                }
+
+                const order = orderDoc.data();
+                const createdAt = order.createdAt ? new Date(order.createdAt.toDate()).toLocaleString() : 'N/A';
+                const updatedAt = order.updatedAt ? (order.updatedAt.toDate ? new Date(order.updatedAt.toDate()).toLocaleString() : new Date(order.updatedAt).toLocaleString()) : '';
+
+                const ship = order.shippingAddress || {};
+
+                let itemsHtml = '';
+                if (Array.isArray(order.items) && order.items.length) {
+                    order.items.forEach(it => {
+                        const title = it.name || it.title || 'Item';
+                        const qty = it.quantity || 1;
+                        const price = it.price || 0;
+                        const img = it.image || '';
+
+                        itemsHtml += `
+                            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eee;">
+                                ${img ? `<img src="${img}" alt="${title}" class="modal-image--large" onclick="openImageInProductModal('${img}', '${(title || '').replace(/'/g, "\\'")}')">` : '<div class="modal-image--large" style="background:#f0f0f0;"></div>'}
+                                <div style="flex:1;">
+                                    <div style="font-weight:600;font-size:14px;">${title}</div>
+                                    <div style="color:var(--dark-gray);font-size:13px;margin-top:4px;">Qty: ${qty} • EGP ${Number(price).toFixed(2)}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                const status = order.status || 'Pending';
+                const statusColors = {
+                    'Pending': '#fff3cd',
+                    'Processing': '#e2e3e5',
+                    'Delivered': '#d4edda'
+                };
+                const statusColor = statusColors[status] || '#f0f0f0';
+
+                let backdrop = document.getElementById('orderDetailBackdrop');
+                if (!backdrop) {
+                    backdrop = document.createElement('div');
+                    backdrop.id = 'orderDetailBackdrop';
+                    backdrop.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;';
+                    backdrop.onclick = (e) => {
+                        if (e.target === backdrop) closeOrderDetailsModal();
+                    };
+                    document.body.appendChild(backdrop);
+                }
+
+                const modal = document.createElement('div');
+                modal.style.cssText = 'background:white;border-radius:12px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.15);';
+                modal.innerHTML = `
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                        <h2 style="margin:0;font-size:18px;">Order Details</h2>
+                        <button onclick="closeOrderDetailsModal()" style="background:none;border:none;font-size:24px;cursor:pointer;color:#999;">×</button>
+                    </div>
+
+                    <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:16px;padding:12px;background:#f9f9f9;border-radius:8px;">
+                        <div>
+                            <div style="color:var(--dark-gray);font-size:12px;margin-bottom:4px;">ORDER NUMBER</div>
+                            <div style="font-weight:700;font-size:16px;">#${orderId.substring(0, 12).toUpperCase()}</div>
+                            <div style="color:var(--dark-gray);font-size:12px;margin-top:8px;">Placed: ${createdAt}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="color:var(--dark-gray);font-size:12px;margin-bottom:4px;">TOTAL</div>
+                            <div style="font-weight:700;font-size:18px;color:var(--dark-color);">EGP ${(order.total || 0).toFixed(2)}</div>
+                            <div style="margin-top:8px;"><span style="padding:6px 12px;border-radius:20px;background:${statusColor};font-weight:600;font-size:12px;">${status}</span></div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin:16px 0 12px;font-size:14px;font-weight:700;">Shipping Information</h3>
+                    <div style="background:#f9f9f9;padding:12px;border-radius:8px;font-size:13px;line-height:1.6;">
+                        <div><strong>${ship.fullName || 'N/A'}</strong></div>
+                        <div>${ship.email || 'N/A'}</div>
+                        <div>${ship.phone || 'N/A'}</div>
+                        <div>${ship.address || ''} ${ship.city ? ', ' + ship.city : ''} ${ship.postalCode ? ', ' + ship.postalCode : ''}</div>
+                    </div>
+
+                    <h3 style="margin:16px 0 12px;font-size:14px;font-weight:700;">Items (${order.items ? order.items.length : 0})</h3>
+                    <div style="border:1px solid #eee;border-radius:8px;padding:12px;">
+                        ${itemsHtml || '<p style="color:var(--dark-gray);">No items in this order</p>'}
+                    </div>
+
+                    ${updatedAt ? `<div style="margin-top:12px;color:var(--dark-gray);font-size:12px;">Last updated: ${updatedAt}</div>` : ''}
+
+                    <button onclick="closeOrderDetailsModal()" style="width:100%;margin-top:20px;padding:12px;background:var(--dark-color);color:white;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px;">Close</button>
+                `;
+
+                backdrop.innerHTML = '';
+                backdrop.appendChild(modal);
+                backdrop.style.display = 'flex';
+            } catch (error) {
+                console.error('Error loading order details:', error);
+                showTempMessage && showTempMessage('Error loading order details. Please try again.');
+            }
+        }
+
+        function closeOrderDetailsModal() {
+            const backdrop = document.getElementById('orderDetailBackdrop');
+            if (backdrop) backdrop.style.display = 'none';
+        }
+
+        window.addToWishlist = addToWishlist;
+        window.removeFromWishlist = removeFromWishlist;
+        window.loadUserWishlist = loadUserWishlist;
+        window.loadUserOrders = loadUserOrders;
+        window.viewOrderDetails = viewOrderDetails;
+        window.closeOrderDetailsModal = closeOrderDetailsModal;
+
+        window.addEventListener('load', function () {
+            const isLoggedIn = localStorage.getItem('vegaUser');
+            if (!isLoggedIn) {
+                showTempMessage && showTempMessage('Please login to access your profile.');
+                window.location.href = 'login.html?redirect=profile';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            firebase.auth().onAuthStateChanged(async (user) => {
+                if (user) {
+                    console.log("Loading user data for:", user.uid);
+                    await loadUserOrders(user.uid);
+                }
+            });
+        });
+    </script>
